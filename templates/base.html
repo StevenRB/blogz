@@ -1,32 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
-         <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-        
-        <title>{{ page_header }}</title>
-
-        <style>
-            *{ font-family: 'Slabo 27px', serif; }
-            .header{ background-color: black; color:white; padding: 10px 15px }
-            .alert-danger{ margin:30px 0; }
-            .error{ color:red; }
-        </style>
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -44,25 +16,43 @@
 
         <style>
             *{ font-family: 'Slabo 27px', serif; }
-            .header{ background-color: black; color:white; padding: 10px 15px }
+            .header{ background-color: greenyellow; color:black; padding: 10px 15px }
             .alert-danger{ margin:30px 0; }
             .error{ color:red; }
         </style>
 
     </head>
     <body>
-
         <div class="container">
             <div class="row header">
                 <div class="col"> <h4>{{ page_header }}</h4> </div>
-                <div class="col-3"><a href="/">Main Page</a></div>
-                <div class="col-3"><a href="/blog_form">Add a Blog</a></div>
+                <div class="col-2"><a href="/">Main Page</a></div>
+                <div class="col-2"><a href="/blog">Blogs</a></div>
+                {% if loggedin %}
+                <div class="col-2"><a href="/blog_form">Add a Blog</a></div>
+                {% else %}
+                <div class="col-2"><a href="/login">Login</a></div>
+                <dvi class="col-2"><a href="/register">Register</a></div>    
+                {% endif %}
             </div>
             <hr>
             <div class="row">
                 <div class="col">                
-                    {% block content %}
-                    {% endblock %}
+                  {% block content %}
+
+
+                 {% endblock %}
+                </div>
+            </div>
+            
+            <div class="center-block">
+                <div class="row header">
+                    {% if loggedin %}
+                    <div class="col-2">
+                        <span style="color:orange;">{{session['username']}}</span> is logged in 
+                    </div>
+            <div class="col-6"><a href="/logout">Logout</a></div>
+            {% endif %}
                 </div>
             </div>
         </div>

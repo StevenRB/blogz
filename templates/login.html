@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Login</h1>
+        <form action="/login" method="post">
+                <input  placeholder="Username" type="text" name="username" value="{{ user_name }}">
+                    {% if user_error %}
+                        <span class="badge badge-danger"> {{ user_error }} </span>
+                    {% endif %}
+                <input placeholder="Password" type="password" name="password" value="{{ password }}">
+                    {% if password_error %}
+                        <span class="badge badge-danger"> {{ password_error }} </span>
+                    {% endif %}
+                <input type="submit" value="Validate">
+        </form>
+                    <p>Don't have an account? <a href="/register">Create one!</a></p>
+
+
+{% endblock %}

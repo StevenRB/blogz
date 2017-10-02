@@ -13,6 +13,7 @@
             <p>
                 {{ blog.body }}
             </p>
+            author <a href="/blog?user={{blog.owner.id}}">{{blog.owner.username}}</a>
             <hr>
             
         {% endfor %}
